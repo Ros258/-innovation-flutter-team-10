@@ -125,7 +125,7 @@ class _MYHomePageState extends State<MYHomePage> {
                   Icon(Icons.flutter_dash,
                       color: colorScheme.secondary, size: 28),
                   const SizedBox(width: 16),
-                  Icon(Icons.github, color: colorScheme.secondary, size: 28),
+                  Icon(Icons.code, color: colorScheme.secondary, size: 28),
                   const SizedBox(width: 16),
                   Icon(Icons.groups, color: colorScheme.secondary, size: 28),
                   const SizedBox(width: 16),
