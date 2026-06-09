@@ -1,43 +1,43 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const XHNInnovationApp());
+  runApp(const MYInnovationApp());
 }
 
 // ① 修改：App 类名改为个人专属
-class XHNInnovationApp extends StatelessWidget {
-  const XHNInnovationApp({super.key});
+class MYInnovationApp extends StatelessWidget {
+  const MYInnovationApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // ② 修改：标签页标题（浏览器/任务栏显示的名称）
-      title: '徐浩宁的创新实验 - 第14周',
-      // ③ 修改：主题色从默认蓝绿色改为深紫色
+      // ② 修改：标签页标题
+      title: '马琰的创新实验 - 第14周',
+      // ③ 修改：主题色改为活力橙色
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
         useMaterial3: true,
       ),
-      home: const XHNHomePage(),
+      home: const MYHomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class XHNHomePage extends StatefulWidget {
-  const XHNHomePage({super.key});
+class MYHomePage extends StatefulWidget {
+  const MYHomePage({super.key});
 
   @override
-  State<XHNHomePage> createState() => _XHNHomePageState();
+  State<MYHomePage> createState() => _MYHomePageState();
 }
 
-class _XHNHomePageState extends State<XHNHomePage> {
-  // ④ 修改：计数器语义改为"完成任务次数"
-  int _completedTasks = 0;
+class _MYHomePageState extends State<MYHomePage> {
+  // ④ 修改：计数器语义改为"打卡次数"
+  int _checkInCount = 0;
 
-  void _finishOneTask() {
+  void _doCheckIn() {
     setState(() {
-      _completedTasks++;
+      _checkInCount++;
     });
   }
 
@@ -49,9 +49,9 @@ class _XHNHomePageState extends State<XHNHomePage> {
       // ⑤ 修改：AppBar 标题改为本人信息
       appBar: AppBar(
         backgroundColor: colorScheme.inversePrimary,
-        title: const Text('徐浩宁 · 创新实验第14周'),
-        // ⑥ 修改：AppBar 新增导航图标
-        leading: const Icon(Icons.science_outlined),
+        title: const Text('马琰 · 创新实验第14周'),
+        // ⑥ 修改：AppBar 新增头像图标
+        leading: const Icon(Icons.person_pin),
       ),
       body: Center(
         child: Padding(
@@ -59,13 +59,13 @@ class _XHNHomePageState extends State<XHNHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // ⑦ 修改：新增顶部 Flutter Logo 图标
-              Icon(Icons.flutter_dash, size: 80, color: colorScheme.primary),
+              // ⑦ 修改：顶部大图标
+              Icon(Icons.rocket_launch, size: 80, color: colorScheme.primary),
               const SizedBox(height: 16),
 
-              // ⑦ 修改：新增学校/学号信息文字
+              // ⑧ 修改：显示姓名 + 学号 + 小组
               Text(
-                '云南大学 · 20231060050',
+                '马琰 · 20231120206 · 第10组',
                 style: TextStyle(
                   fontSize: 14,
                   color: colorScheme.outline,
@@ -73,7 +73,7 @@ class _XHNHomePageState extends State<XHNHomePage> {
               ),
               const SizedBox(height: 8),
 
-              // ⑤ 修改：页面提示语改为任务完成相关
+              // ⑨ 修改：页面提示语
               const Text(
                 'Hello Flutter！\n我正在完成第14周入门任务',
                 textAlign: TextAlign.center,
@@ -81,7 +81,7 @@ class _XHNHomePageState extends State<XHNHomePage> {
               ),
               const SizedBox(height: 32),
 
-              // ⑧ 修改：计数器改为卡片式布局，优化间距与字体
+              // ⑩ 修改：计数器改为卡片式布局
               Card(
                 elevation: 4,
                 shape: RoundedRectangleBorder(
@@ -92,12 +92,11 @@ class _XHNHomePageState extends State<XHNHomePage> {
                       vertical: 28.0, horizontal: 48.0),
                   child: Column(
                     children: [
-                      Icon(Icons.task_alt,
+                      Icon(Icons.favorite,
                           size: 36, color: colorScheme.primary),
                       const SizedBox(height: 12),
                       Text(
-                        // ④ 修改：计数文案改为"已完成任务"
-                        '已完成任务',
+                        '今日打卡次数',
                         style: TextStyle(
                           fontSize: 16,
                           color: colorScheme.onSurfaceVariant,
@@ -105,7 +104,7 @@ class _XHNHomePageState extends State<XHNHomePage> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        '$_completedTasks 次',
+                        '$_checkInCount 次',
                         style: TextStyle(
                           fontSize: 48,
                           fontWeight: FontWeight.w800,
@@ -119,18 +118,19 @@ class _XHNHomePageState extends State<XHNHomePage> {
 
               const SizedBox(height: 24),
 
-              // ⑦ 修改：底部新增多个图标行
+              // ⑪ 修改：底部图标行
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.school, color: colorScheme.secondary, size: 28),
-                  const SizedBox(width: 16),
-                  Icon(Icons.code, color: colorScheme.secondary, size: 28),
-                  const SizedBox(width: 16),
-                  Icon(Icons.rocket_launch,
+                  Icon(Icons.flutter_dash,
                       color: colorScheme.secondary, size: 28),
                   const SizedBox(width: 16),
-                  Icon(Icons.star, color: colorScheme.secondary, size: 28),
+                  Icon(Icons.github, color: colorScheme.secondary, size: 28),
+                  const SizedBox(width: 16),
+                  Icon(Icons.groups, color: colorScheme.secondary, size: 28),
+                  const SizedBox(width: 16),
+                  Icon(Icons.emoji_events,
+                      color: colorScheme.secondary, size: 28),
                 ],
               ),
             ],
@@ -138,12 +138,12 @@ class _XHNHomePageState extends State<XHNHomePage> {
         ),
       ),
 
-      // ⑤ 修改：FAB 按钮改为"完成打卡"，配合任务语义
+      // ⑫ 修改：FAB 按钮
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: _finishOneTask,
-        icon: const Icon(Icons.check_circle_outline),
-        label: const Text('完成一次打卡'),
-        tooltip: '点击记录完成一次任务',
+        onPressed: _doCheckIn,
+        icon: const Icon(Icons.add_task),
+        label: const Text('打卡一次'),
+        tooltip: '点击完成一次打卡',
       ),
     );
   }
